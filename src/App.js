@@ -1,14 +1,27 @@
 import React from "react";
-import Form from "./Form";
+import { BrowserRouter, Routes, Route, Redirect } from "react-router-dom";
+import Home from "./components/Home";
+import SignIn from "./components/SignIn";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import EXCHANGE_RATES from "./ExpenseRates";
+import Netflix from "./components/Netflix";
 
-const App = () => {
+function App() {
   return (
-    <div className="app">
-      <EXCHANGE_RATES />
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+        </Routes>
+        <Routes>
+          <Route path="/signin" element={<SignIn />} />
+        </Routes>
+        <Routes>
+          <Route path="/netflix" element={<Netflix />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
-};
+}
 
 export default App;
