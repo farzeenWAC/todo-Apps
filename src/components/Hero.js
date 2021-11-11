@@ -21,16 +21,16 @@ function Hero() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={`https://images.hdqwalls.com/wallpapers/netflix-the-witcher-cm.jpg`}
+          src={`https://images.hdqwalls.com/wallpapers/4k-money-heist-netflix-u9.jpg`}
           alt="The Witcher"
         />
 
         <Carousel.Caption>
-          <h3>The Witcher</h3>
+          <h3>Money Heist</h3>
           <p>
-            The witcher Geralt, a mutated monster hunter, struggles to find his
-            place in a world in which people often prove more wicked than
-            beasts.
+            A criminal mastermind who goes by "The Professor" has a plan to pull
+            off the biggest heist in recorded history-- to print billions of
+            euros in the Royal Mint of Spain.
           </p>
         </Carousel.Caption>
       </Carousel.Item>

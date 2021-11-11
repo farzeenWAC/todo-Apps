@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navbar, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const NavbarComponent = (props) => {
+const NavbarComponent = () => {
   const [showNavBackground, setShowNavBackground] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -16,6 +16,7 @@ const NavbarComponent = (props) => {
       };
     });
   }, []);
+  const path = window.location.pathname;
   return (
     <div>
       <Navbar
@@ -33,9 +34,11 @@ const NavbarComponent = (props) => {
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-            <Link className="signin_link nav-link" to="/signin">
-              <Navbar.Text>{props.name}</Navbar.Text>
-            </Link>
+            {path === "/" && (
+              <Link className="signin_link nav-link" to="/signin">
+                <Navbar.Text>Sign In</Navbar.Text>
+              </Link>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import NavbarComponent from "./NavbarComponent";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import Footer from "./Footer";
-import { Redirect } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showNetflix, setShowNetflix] = useState(false);
+  const [error, setError] = useState(false);
   const emailChangeHandler = (e) => {
     setEmail(e.target.value);
   };
@@ -18,19 +18,31 @@ const SignIn = () => {
     emailId: "farzeenshareef@gmail.com",
     password: "12345",
   };
+  const navigate = useNavigate();
   const submitHandler = (e) => {
     e.preventDefault();
     if (data.emailId == email && data.password == password) {
-      setShowNetflix(true);
+      navigate("/stream");
+      setError(false);
     } else {
-      setShowNetflix(false);
+      setError(true);
     }
+    setTimeout(() => {
+      setError(false);
+    }, 4000);
   };
+
   return (
-    <div>
+    <div className="signin-form_container">
       <NavbarComponent />
-      <div className="signin-form">
-        <Form>
+      {error &&
+        ["danger"].map((variant, idx) => (
+          <Alert className="alert" key={idx} variant={variant}>
+            The entered email and passwords does'nt match.
+          </Alert>
+        ))}
+      <div className="signin">
+        <Form className=" signin-form">
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
